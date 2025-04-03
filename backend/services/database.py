@@ -9,7 +9,7 @@ DATABASE_NAME = decouple.config("DATABASE_NAME")
 
 
 sqlite_file_name = f"{DATABASE_NAME}"
-sqlite_file_path = f"sqlite:///test/{sqlite_file_name}"
+sqlite_file_path = f"sqlite:///{sqlite_file_name}"
 
 
 connect_args = {"check_same_thread": False}

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, status
 from ..services.database import SessionDep
 from ..models import Store, StoreUpdate, StoreDisplay, StoreCreate
 from sqlmodel import select
@@ -25,7 +25,7 @@ async def read_store(store_id: int, session: SessionDep):
 
 
 # POST request
-@router.post("/", response_model=StoreDisplay)
+@router.post("/", response_model=StoreDisplay, status_code=status.HTTP_201_CREATED)
 async def create_store(store: StoreCreate, session: SessionDep):
     """Create a new store."""
     store = Store.model_validate(store)

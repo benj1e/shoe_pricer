@@ -8,6 +8,7 @@ from .services.database import init_db, get_session
 from .routers import shoes, stores, price_alerts, price_history
 
 
+@asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
     yield

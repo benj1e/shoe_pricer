@@ -2,12 +2,13 @@ from fastapi import APIRouter, HTTPException
 from ..services.database import SessionDep
 from ..models import Shoe, ShoeUpdate, ShoeDisplay, ShoeCreate
 from sqlmodel import select
+from fastapi import status
 
 
 router = APIRouter(prefix="/shoes", tags=["shoes"])
 
 
-@router.post("/", response_model=ShoeDisplay)
+@router.post("/", response_model=ShoeDisplay, status_code=status.HTTP_201_CREATED)
 async def create_shoe(shoe: ShoeCreate, session: SessionDep):
     """Create a new shoe."""
     shoe = Shoe.model_validate(shoe)
