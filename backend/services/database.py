@@ -13,7 +13,7 @@ sqlite_file_path = f"sqlite:///test/{sqlite_file_name}"
 
 
 connect_args = {"check_same_thread": False}
-engine = create_engine(sqlite_file_path, connect_args=connect_args, echo=True)
+engine = create_engine(sqlite_file_path, connect_args=connect_args)
 
 
 def init_db():
